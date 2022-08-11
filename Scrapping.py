@@ -1,9 +1,9 @@
-import numpy as np
-from bs4 import BeautifulSoup
-from Functions_Get_Html import getHtmlFromUrl
-import pandas as pd
+import numpy as np  #import numpy
+from bs4 import BeautifulSoup   # import beautifulsoup
+from Functions_Get_Html import getHtmlFromUrl  # import another function_get_html which has made in another file
+import pandas as pd  # import pandas
 
-from Functions import getLinksToNextPages
+from Functions import getLinksToNextPages    # import function to get links
 
 
 def getPrice_ItemName_Discount_fromWebsite(
@@ -47,12 +47,13 @@ def getPrice_ItemName_Discount_fromWebsite(
         df = df.append({"name": cur_linkAndName,
                         "prices": price,
                         "offers": discount}, ignore_index=True)
+        # call function and append the results into the dataframe
 
-    return df
+    return df   # return df result
 
 
-def searchInfoOnPageAndSaveResults(startingUrl, fileNameToSave):
-    arrOfPages = getLinksToNextPages(startingUrl)
+def searchInfoOnPageAndSaveResults(startingUrl, fileNameToSave):   # define a function
+    arrOfPages = getLinksToNextPages(startingUrl)      # get links to next pages
 
     arrFinal = np.array([])
     for itter, curElem in enumerate(arrOfPages):
